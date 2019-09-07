@@ -37,4 +37,9 @@ public class IndexController {
         return "editaraluno";
     }
     
+    @RequestMapping("/editaraluno")
+    public String editaaluno(){
+        return "editaraluno";
+    }
+    
 }
