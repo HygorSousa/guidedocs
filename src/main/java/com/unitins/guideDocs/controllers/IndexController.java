@@ -26,4 +26,15 @@ public class IndexController {
     public String listarProfessor(){
         return "lista_prof";
     }
+    
+    @RequestMapping("/cadastroaluno")
+    public String cadastraraluno(){
+        return "cadastroaluno";
+    }
+    
+    @RequestMapping("/editaraluno")
+    public String editaraluno(){
+        return "editaraluno";
+    }
+    
 }
