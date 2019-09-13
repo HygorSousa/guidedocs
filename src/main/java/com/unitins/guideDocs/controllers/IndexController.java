@@ -15,6 +15,15 @@ public class IndexController {
     @RequestMapping("/login")
     public String login() {
         return "login";
+        
+    }
+    @RequestMapping("/aprovarProtocolo")
+    public String aprovarProtocolo() {
+        return "aprovarProtocolo";
+    }
+    @RequestMapping("/definirOrientador")
+    public String definirOrientador() {
+        return "definirOrientador";
     }
 
 }
