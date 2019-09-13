@@ -19,4 +19,10 @@ public class AlunoController {
     public String listarAluno() {
         return "listarAluno";
     }
+    
+    @RequestMapping("/selecaobanca")
+    public String selecaobanca() {
+        return "selecaoBanca";
+    }
+
 }

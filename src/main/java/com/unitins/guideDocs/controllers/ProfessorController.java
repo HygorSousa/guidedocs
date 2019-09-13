@@ -20,4 +20,10 @@ public class ProfessorController {
     public String excluirAluno() {
         return "excluirAluno";
     }
+    
+    @RequestMapping("/upprojet")
+    public String encaminharProjeto() {
+        return "uploadProjeto";
+    }
+
 }
