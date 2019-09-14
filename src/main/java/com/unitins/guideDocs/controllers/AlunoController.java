@@ -25,4 +25,8 @@ public class AlunoController {
         return "selecaoBanca";
     }
 
+    @RequestMapping("/submeterArquivo")
+    public String submeterArquivos() {
+        return "submeterArquivo";
+    }
 }

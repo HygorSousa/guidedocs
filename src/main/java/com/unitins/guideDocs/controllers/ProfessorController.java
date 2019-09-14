@@ -26,4 +26,23 @@ public class ProfessorController {
         return "uploadProjeto";
     }
 
+    @RequestMapping("/avaliarProjeto")
+    public String avaliarProjeto() {
+        return "avaliarProjeto";
+    }
+    
+    @RequestMapping("/criarTurma")
+    public String criarTurma() {
+        return "criarTurma";
+    }
+    
+    @RequestMapping("/definirDisponibilidade")
+    public String definirDisponibilidade() {
+        return "definirDisponibilidade";
+    }
+    
+    @RequestMapping("/vincularOrientador")
+    public String vincularOrientador() {
+        return "vincularOrientador";
+    }
 }
