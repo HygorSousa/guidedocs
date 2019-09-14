@@ -3,3 +3,6 @@
 /guideDocs.iml
 git
 /bin/
+/.classpath
+/.project
+/.settings/
