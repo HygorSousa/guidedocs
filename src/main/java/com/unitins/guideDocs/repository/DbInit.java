@@ -23,6 +23,7 @@ public class DbInit implements CommandLineRunner {
 
         // Crete users
         Usuario admin = new Usuario("admin", new BCryptPasswordEncoder().encode("admin"), "ADMIN");
+        Usuario professor = new Usuario("professor", new BCryptPasswordEncoder().encode("pro123"), "PROFESSOR");
 
         List<Usuario> users = Collections.singletonList(admin);
 

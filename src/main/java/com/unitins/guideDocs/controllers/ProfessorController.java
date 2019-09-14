@@ -8,7 +8,7 @@ public class ProfessorController {
 
     @RequestMapping("/cadastrarProfessor")
     public String cadastrarProfessor() {
-        return "cadastrarProfessor";
+        return "/admin/cadastrarProfessor";
     }
 
     @RequestMapping("/listarProfessor")
@@ -35,7 +35,6 @@ public class ProfessorController {
     public String criarTurma() {
         return "criarTurma";
     }
-
 
     @RequestMapping("/definirDisponibilidade")
     public String definirDisponibilidade() {

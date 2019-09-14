@@ -10,4 +10,10 @@ public class TestandoController {
     public String logado(){
         return "logado";
     }
+
+
+    @RequestMapping("/listar_documentos_assinar")
+    public String listadocs() {
+        return "listar_documentos_assinar";
+    }
 }
