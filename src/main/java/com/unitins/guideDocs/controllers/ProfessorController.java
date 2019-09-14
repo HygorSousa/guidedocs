@@ -20,7 +20,7 @@ public class ProfessorController {
     public String excluirAluno() {
         return "excluirAluno";
     }
-    
+
     @RequestMapping("/upprojet")
     public String encaminharProjeto() {
         return "uploadProjeto";
@@ -30,19 +30,30 @@ public class ProfessorController {
     public String avaliarProjeto() {
         return "avaliarProjeto";
     }
-    
+
     @RequestMapping("/criarTurma")
     public String criarTurma() {
         return "criarTurma";
     }
-    
+
+
     @RequestMapping("/definirDisponibilidade")
     public String definirDisponibilidade() {
         return "definirDisponibilidade";
     }
-    
+
     @RequestMapping("/vincularOrientador")
     public String vincularOrientador() {
         return "vincularOrientador";
+    }
+
+    @RequestMapping("/aprovarProtocolo")
+    public String aprovarProtocolo() {
+        return "aprovarProtocolo";
+    }
+
+    @RequestMapping("/definirOrientador")
+    public String definirOrientador() {
+        return "definirOrientador";
     }
 }
