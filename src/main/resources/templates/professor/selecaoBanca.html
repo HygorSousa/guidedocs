@@ -1,62 +1,91 @@
 <!DOCTYPE HTML>
 <html lang="br" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Seleção de Banca</title>
-    <div th:replace="fragments/header :: header-css"></div>
-    <div th:replace="fragments/header :: header-js"></div>
+<title>Seleção de Banca</title>
+<div th:replace="fragments/header :: header-css"></div>
+<div th:replace="fragments/header :: header-js"></div>
 </head>
 <body class="hold-transition skin-purple sidebar-mini">
-<div class="wrapper">
-    <div th:replace="fragments/header :: header"></div>
-    <div th:replace="fragments/sidebar :: sidebar"></div>
+	<div class="wrapper">
+		<div th:replace="fragments/header :: header"></div>
+		<div th:replace="fragments/sidebar :: sidebar"></div>
 
-    <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
 
-        <section class="content-header">
-            <h1>Candidatos a Banca Avaliadora</h1>
-            <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-                <li class="active">Here</li>
-            </ol>
-        </section>
+			<section class="content-header">
+				<h1>Definir Banca Avaliadora</h1>
+				<ol class="breadcrumb">
+					<li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+					<li class="active">Here</li>
+				</ol>
+			</section>
 
-        <br>
-        <div>
-            <nav style="width: 50%; margin-left: 49%">
-                <output>Selecione o Projeto</output>
-                <select class="form-control">
-                    <option>Projeto 1</option>
-                    <option>Projeto 2</option>
-                    <option>Projeto 3</option>
-                    <option>Projeto 4</option>
-                </select>
-            </nav>
-        </div>
-        <br>
-        <table class="table table-bordered">
-            <tbody>
-            <tr style="background-color: #354248; color: white;">
-                <th>Candidato</th>
-                <th style="width: 40px">Convocar</th>
-            </tr>
-            <tr>
-                <td>Alex Coelho</td>
-                <td><input type="checkbox"></td>
-            </tr>
-            <tr>
-                <td>Darlene Teixera Castro</td>
-                <td><input type="checkbox"></td>
-            </tr>
-            </tbody>
-        </table>
-        <button class="btn btn-primary" style="width: 100%;" type="submit">Confirmar</button>
-        </section>
-        <!-- /.content -->
-    </div>
+			<section>
+				<div class="container" style="width: 80%;">
+					<div>
+						<nav style="width: 100%;">
+							<output>Selecione o Projeto</output>
+							<select class="form-control">
+								<option>Projeto 1</option>
+								<option>Projeto 2</option>
+								<option>Projeto 3</option>
+								<option>Projeto 4</option>
+							</select>
+						</nav>
+					</div>
 
-    <div th:replace="fragments/footer :: footer"></div>
-    <div th:replace="fragments/sidebar :: sidebar-control"></div>
-</div>
+					<table class="table">
+						<tr>
+							<th>Data</th>
+							<th>Hora</th>
+						</tr>
+						<tr>
+							<td><i class="fa fa-calendar"></i><input
+								class="form-control pull-right" id="datepicker" type="date"></td>
+							<td><i class="fa fa-clock-o" aria-hidden="true"></i><input
+								class="form-control pull-right" id="datepicker" type="time"></td>
+						</tr>
+					</table>
+
+					<div>
+						<table style="width: 100%">
+							<tr>
+								<td style="width: 97%;"><nav>
+										<output>Professor</output>
+										<select class="form-control">
+											<option>Projeto 1</option>
+											<option>Projeto 2</option>
+											<option>Projeto 3</option>
+											<option>Projeto 4</option>
+										</select>
+									</nav></td>
+								<td><button style="margin-top: 100%;">+</button></td>
+							</tr>
+						</table>
+					</div>
+					<br>
+					<table class="table table-bordered">
+						<tbody>
+							<tr style="background-color: #354248; color: white;">
+								<th>Banca Avaliadora</th>
+							</tr>
+							<tr>
+								<td>Alex Coelho</td>
+							</tr>
+							<tr>
+								<td>Darlene Teixera Castro</td>
+							</tr>
+						</tbody>
+					</table>
+					<button class="btn btn-primary" type="submit">Confirmar</button>
+				</div>
+			</section>
+			<!-- /.content -->
+		</div>
+
+		<div th:replace="fragments/footer :: footer"></div>
+		<div th:replace="fragments/sidebar :: sidebar-control"></div>
+	</div>
 </body>
 </html>
