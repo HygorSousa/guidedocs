@@ -6,36 +6,48 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ProfessorController {
 
-    @RequestMapping("/criarTurma")
-    public String criarTurma() {
-        return "/professor/criarTurma";
-    }
+	@RequestMapping("/criarTurma")
+	public String criarTurma() {
+		return "/professor/criarTurma";
+	}
 
-    @RequestMapping("/definirDisponibilidade")
-    public String definirDisponibilidade() {
-        return "/professor/definirDisponibilidade";
-    }
+	@RequestMapping("/avaliarProjeto")
+	public String avaliarProjeto() {
+		return "/professor/avaliarProjeto";
+	}
 
-    @RequestMapping("/definirOrientador")
-    public String definirOrientador() {
-        return "/professor/definirOrientador";
-    }
+	@RequestMapping("/definirDisponibilidade")
+	public String definirDisponibilidade() {
+		return "/professor/definirDisponibilidade";
+	}
 
-    @RequestMapping("/listarDocumentosAssinar")
-    public String listarDocumentosAssinar() {
-        return "/professor/listarDocumentosAssinar";
-    }
+	@RequestMapping("/definirOrientador")
+	public String definirOrientador() {
+		return "/professor/definirOrientador";
+	}
 
-    @RequestMapping("/selecaoBanca")
-    public String selecaoBanca() {
-        return "/professor/selecaoBanca";
-    }
+	@RequestMapping("/listarDocumentosAssinar")
+	public String listarDocumentosAssinar() {
+		return "/professor/listarDocumentosAssinar";
+	}
 
-    @RequestMapping("/vincularOrientador")
-    public String vincularOrientador() { return "/professor/vincularOrientador"; }
+	@RequestMapping("/selecaoBanca")
+	public String selecaoBanca() {
+		return "/professor/selecaoBanca";
+	}
 
-    @RequestMapping("/submeterArquivo")
-    public String submeterArquivos() {
-        return "/professor/submeterArquivo";
-    }
+	@RequestMapping("/vincularOrientador")
+	public String vincularOrientador() {
+		return "/professor/vincularOrientador";
+	}
+
+	@RequestMapping("/submeterArquivo")
+	public String submeterArquivos() {
+		return "/professor/submeterArquivo";
+	}
+	
+	@RequestMapping("/gerenciarOrientacoes")
+	public String gerenciarOrientacoes() {
+		return "/professor/gerenciarOrientacoes";
+	}
 }

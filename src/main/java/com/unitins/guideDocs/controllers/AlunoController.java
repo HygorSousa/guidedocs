@@ -5,13 +5,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class AlunoController {
-    @RequestMapping("/aprovarProtocolo")
-    public String aprovarProtocolo() { return "/aluno/aprovarProtocolo"; }
-
-    @RequestMapping("/avaliarProjeto")
-    public String avaliarProjeto() {
-        return "/aluno/avaliarProjeto";
-    }
+    @RequestMapping("/cadastrarOrientacao")
+    public String cadastrarOrientacao() { return "/aluno/cadastrarOrientacao"; }
 
     @RequestMapping("/uploadProjeto")
     public String encaminharProjeto() {
