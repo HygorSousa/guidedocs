@@ -5,7 +5,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -24,8 +24,9 @@ public class DbInit implements CommandLineRunner {
         // Crete users
         Usuario admin = new Usuario("admin", new BCryptPasswordEncoder().encode("admin"), "ADMIN");
         Usuario professor = new Usuario("professor", new BCryptPasswordEncoder().encode("pro123"), "PROFESSOR");
+        Usuario aluno = new Usuario("aluno", new BCryptPasswordEncoder().encode("alu123"), "ALUNO");
 
-        List<Usuario> users = Collections.singletonList(admin);
+        List<Usuario> users = Arrays.asList(admin, professor, aluno);
 
         // Save to db
         this.usuarioRepository.saveAll(users);
