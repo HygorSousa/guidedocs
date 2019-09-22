@@ -5,11 +5,9 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.persistence.Column;
-import javax.persistence.EntityListeners;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.util.Date;
 
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
@@ -18,28 +16,30 @@ import java.time.LocalDate;
         allowGetters = true
 )
 public abstract class AuditoriaModel implements Serializable {
+
     @Column(name = "datacadastro", nullable = false, updatable = false)
     @CreatedDate
-    private LocalDate datacadastro;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date datacadastro;
 
     @Column(name = "dataalteracao", nullable = false)
     @LastModifiedDate
-    private LocalDate dataalteracao;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dataalteracao;
 
-
-    public LocalDate getDatacadastro() {
+    public Date getDatacadastro() {
         return datacadastro;
     }
 
-    public void setDatacadastro(LocalDate datacadastro) {
+    public void setDatacadastro(Date datacadastro) {
         this.datacadastro = datacadastro;
     }
 
-    public LocalDate getDataalteracao() {
+    public Date getDataalteracao() {
         return dataalteracao;
     }
 
-    public void setDataalteracao(LocalDate dataalteracao) {
+    public void setDataalteracao(Date dataalteracao) {
         this.dataalteracao = dataalteracao;
     }
 }

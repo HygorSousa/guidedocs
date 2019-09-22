@@ -4,38 +4,76 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
 @Entity
-public class Usuario extends AuditoriaModel implements UserDetails {
+public class Pessoa extends AuditoriaModel implements UserDetails {
 
     @Id
-    private String login;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    private String nome;
+
+    private String matricula;
+
+    private String cpf;
 
     private String senha;
 
     private String roles = "";
 
-    public Usuario(String login, String senha, String roles) {
-        this.login = login;
+    @ManyToMany
+    @JoinTable(name = "ArquivoPessoa",
+            joinColumns = @JoinColumn(name = "idPessoa"),
+            inverseJoinColumns = @JoinColumn(name = "idArquivo"))
+    private List<Arquivo> arquivos;
+
+    public Pessoa() {
+    }
+
+    public Pessoa(String nome, String matricula, String cpf, String senha, String roles) {
+        this.nome = nome;
+        this.matricula = matricula;
+        this.cpf = cpf;
         this.senha = senha;
         this.roles = roles;
     }
 
-    protected Usuario() {
+    public Integer getId() {
+        return id;
     }
 
-    public String getLogin() {
-        return login;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public String getSenha() {
@@ -46,7 +84,23 @@ public class Usuario extends AuditoriaModel implements UserDetails {
         this.senha = senha;
     }
 
-    public List<String> getRoleList() {
+    public String getRoles() {
+        return roles;
+    }
+
+    public void setRoles(String roles) {
+        this.roles = roles;
+    }
+
+    public List<Arquivo> getArquivos() {
+        return arquivos;
+    }
+
+    public void setArquivos(List<Arquivo> arquivos) {
+        this.arquivos = arquivos;
+    }
+
+    private List<String> getRoleList() {
         if (this.roles.length() > 0) {
             return Arrays.asList(this.roles.split(","));
         }
@@ -66,7 +120,6 @@ public class Usuario extends AuditoriaModel implements UserDetails {
         return authorities;
     }
 
-
     @Override
     public String getPassword() {
         return this.senha;
@@ -74,7 +127,7 @@ public class Usuario extends AuditoriaModel implements UserDetails {
 
     @Override
     public String getUsername() {
-        return this.login;
+        return this.cpf;
     }
 
     @Override
