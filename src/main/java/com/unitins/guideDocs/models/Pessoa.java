@@ -11,7 +11,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Entity
-public class Pessoa extends AuditoriaModel implements UserDetails {
+public class    Pessoa extends AuditoriaModel implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
