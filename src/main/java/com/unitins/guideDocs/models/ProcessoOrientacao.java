@@ -18,7 +18,7 @@ public class ProcessoOrientacao {
 
     private TipoProcessoOrientacao tipoProcessoOrietacao;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Aluno aluno;
 
     @ManyToOne(fetch = FetchType.LAZY)
