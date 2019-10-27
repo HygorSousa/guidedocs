@@ -1,6 +1,8 @@
 package com.unitins.guideDocs.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -15,6 +17,8 @@ import java.util.Date;
         value = {"datacadastro", "dataalteracao"},
         allowGetters = true
 )
+@Getter
+@Setter
 public abstract class AuditoriaModel implements Serializable {
 
     @Column(name = "datacadastro", nullable = false, updatable = false)
@@ -27,19 +31,4 @@ public abstract class AuditoriaModel implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataalteracao;
 
-    public Date getDatacadastro() {
-        return datacadastro;
-    }
-
-    public void setDatacadastro(Date datacadastro) {
-        this.datacadastro = datacadastro;
-    }
-
-    public Date getDataalteracao() {
-        return dataalteracao;
-    }
-
-    public void setDataalteracao(Date dataalteracao) {
-        this.dataalteracao = dataalteracao;
-    }
 }

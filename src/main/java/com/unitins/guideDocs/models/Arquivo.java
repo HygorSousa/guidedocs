@@ -1,8 +1,13 @@
 package com.unitins.guideDocs.models;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 import javax.persistence.*;
 import java.util.List;
 
+@EqualsAndHashCode(callSuper = true)
+@Data
 @Entity
 public class Arquivo extends AuditoriaModel {
 
@@ -19,36 +24,4 @@ public class Arquivo extends AuditoriaModel {
             joinColumns = @JoinColumn(name = "idArquivo"),
             inverseJoinColumns = @JoinColumn(name = "idPessoa"))
     private List<Pessoa> pessoas;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getCaminho() {
-        return caminho;
-    }
-
-    public void setCaminho(String caminho) {
-        this.caminho = caminho;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public List<Pessoa> getPessoas() {
-        return pessoas;
-    }
-
-    public void setPessoas(List<Pessoa> pessoas) {
-        this.pessoas = pessoas;
-    }
 }
