@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="br" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>[Titulo da página]</title>
+  <title>Login</title>
   <div th:replace="fragments/header :: header-css"></div>
   <div th:replace="fragments/header :: header-js"></div>
 </head>
@@ -17,21 +17,20 @@
     <form action="index.html" method="post" th:action="@{/login}">
 
       <div class="form-group has-feedback">
+        <label for="username"></label>
         <input class="form-control" id="username" name="username" placeholder="Login" type="text"/>
-        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
 
       <div class="form-group has-feedback">
+        <label for="password"></label>
         <input class="form-control" id="password" name="password" placeholder="Senha" type="password">
-        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
 
       <div class="row">
         <div class="col-xs-8">
-          <div class="checkbox icheck">
-            <label>
-              <input type="checkbox"> Lembrar-me
-            </label>
+          <div>
+            <input type="checkbox" id="remember-me" name="remember-me">
+            <label for="remember-me">Lembrar-me</label>
           </div>
         </div>
         <!-- /.col -->
@@ -42,8 +41,7 @@
       </div>
     </form>
 
-    <a href="#">I forgot my password</a><br>
-    <a class="text-center" href="register.html">Register a new membership</a>
+    <a href="#">Esqueci minha senha</a><br>
 
   </div>
   <!-- /.login-box-body -->
@@ -51,19 +49,10 @@
 <!-- /.login-box -->
 
 <!-- jQuery 3 -->
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
-<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- iCheck -->
 <script src="plugins/iCheck/icheck.min.js"></script>
-<script>
-  $(function () {
-    $('input').iCheck({
-      checkboxClass: 'icheckbox_square-blue',
-      radioClass: 'iradio_square-blue',
-      increaseArea: '20%' /* optional */
-    });
-  });
-</script>
 </body>
 </html>

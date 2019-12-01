@@ -28,7 +28,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/login").permitAll()
-                .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
+                .and()
+                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/")
+                .and()
+                .rememberMe().tokenValiditySeconds(1800).rememberMeParameter("remember-me");
     }
 
     @Override
