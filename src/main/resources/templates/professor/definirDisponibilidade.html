@@ -1,6 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="br" 
-	xmlns:th="http://www.thymeleaf.org">
+<html lang="br" xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Disponibilidade</title>
 <div th:replace="fragments/header :: header-css"></div>
@@ -26,39 +25,103 @@
 
 				<div class="container" style="width: 80%;">
 
-					<table class="table">
-						<tr>
-							<th>Data</th>
-							<th>Hora</th>
-						</tr>
-						<tr>
-							<td><i class="fa fa-calendar"></i><input
-								class="form-control pull-right" id="datepicker" type="date"></td>
-							<td><i class="fa fa-clock-o" aria-hidden="true"></i><input
-								class="form-control pull-right" id="datepicker" type="time"></td>
-						</tr>
-					</table>
+					<form method="post" th:action="@{/addDisponibilidade}">
+						<table class="table">
 
-					<button class="btn btn-primary" style="width: 100%;" type="submit">Adicionar
-						Disponibilidade</button>
+							<h3>Inicio de Disponibilidade:</h3>
+
+							<tr>
+								<th>Data</th>
+								<th>Hora</th>
+							</tr>
+							<tr>
+								<td><i class="fa fa-calendar"></i><input
+									class="form-control pull-right" id="data" type="date"
+									name="dataInicial" min="2019-01-01" max="2999-12-31"></td>
+								<td><i class="fa fa-clock-o" aria-hidden="true"></i><input
+									class="form-control pull-right" id="horario" type="time"
+									name="horarioInicial"></td>
+							</tr>
+
+
+							<tr>
+								<td><h3>Fim de Disponibilidade:</h3></td>
+							</tr>
+
+							<tr>
+								<th>Data</th>
+								<th>Hora</th>
+							</tr>
+							<tr>
+								<td><i class="fa fa-calendar"></i><input
+									class="form-control pull-right" id="data" type="date"
+									name="dataFinal" min="2019-01-01" max="2999-12-31"></td>
+								<td><i class="fa fa-clock-o" aria-hidden="true"></i><input
+									class="form-control pull-right" id="horario" type="time"
+									name="horarioFinal"></td>
+							</tr>
+
+						</table>
+
+						<input class="btn btn-primary" style="width: 100%;" type="submit"
+							value="Adicionar Disponibilidade">
+					</form>
 
 					<br> <br> <br>
 
 					<h4>Quadro de Disponibilidade</h4>
-					<table class="table table-bordered">
-						<tbody>
-							<tr style="background-color: #354248; color: white;">
-								<th>Data</th>
-								<th>Hora</th>
-								<th style="width: 40px"></th>
-							</tr>
-							<tr>
-								<td>14/09/2019</td>
-								<td>16:00</td>
-								<td><i class="fa fa-trash" aria-hidden="true"></i></td>
-							</tr>
-						</tbody>
-					</table>
+					<div class="row">
+						<div class="col-sm-12">
+							<table aria-describedby="example1_info"
+								class="table table-bordered table-striped dataTable"
+								id="example1" role="grid">
+								<thead>
+									<tr role="row">
+										<th aria-controls="example1"
+											aria-label="Rendering engine: activate to sort column descending"
+											aria-sort="ascending" class="sorting_asc" colspan="1"
+											rowspan="1" style="width: 182px;" tabindex="0">Data Inicial
+										</th>
+										<th aria-controls="example1"
+											aria-label="Browser: activate to sort column ascending"
+											class="sorting" colspan="1" rowspan="1" style="width: 225px;"
+											tabindex="0">Horario Inicial</th>
+										<th aria-controls="example1"
+											aria-label="Rendering engine: activate to sort column descending"
+											aria-sort="ascending" class="sorting_asc" colspan="1"
+											rowspan="1" style="width: 182px;" tabindex="0">Data Final
+										</th>
+										<th aria-controls="example1"
+											aria-label="Browser: activate to sort column ascending"
+											class="sorting" colspan="1" rowspan="1" style="width: 225px;"
+											tabindex="0">Horario Final</th>
+										<th aria-controls="example1"
+											aria-label="Engine version: activate to sort column ascending"
+											class="sorting" colspan="1" rowspan="1" style="width: 156px;"
+											tabindex="0">Deletar</th>
+									</tr>
+								</thead>
+								<tbody th:each="disponibilidade : ${disponibilidades}">
+									<tr class="odd" role="row">
+										<td th:text="${disponibilidade.dataInicial}">data_inicial</td>
+										<td th:text="${disponibilidade.horarioInicial}">horario_inicial</td>
+										<td th:text="${disponibilidade.dataFinal}">data_final</td>
+										<td th:text="${disponibilidade.horarioFinal}">horario_final</td>
+										<td><a th:href="@{/deletarDisponibilidade(id=${disponibilidade.id})}" >Deletar</a></td>
+									</tr>
+								</tbody>
+								<tfoot>
+									<tr>
+										<th colspan="1" rowspan="1">Data Inicial</th>
+										<th colspan="1" rowspan="1">Horario Inicial</th>
+										<th colspan="1" rowspan="1">Data Final</th>
+										<th colspan="1" rowspan="1">Horario Final</th>
+										<th colspan="1" rowspan="1">Deletar</th>
+									</tr>
+								</tfoot>
+							</table>
+						</div>
+					</div>
 				</div>
 			</section>
 			<!-- /.content -->
