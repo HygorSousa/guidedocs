@@ -26,6 +26,7 @@ public class Aluno extends Pessoa {
 		setCpf(cpf);
 		setSenha(senha);
 		setRoles(roles);
+		setEmail("hygor-araujo2@hotmail.com");
 	}
 
 }

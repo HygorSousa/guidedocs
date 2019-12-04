@@ -5,6 +5,8 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -21,11 +23,18 @@ public class Pessoa extends AuditoriaModel implements UserDetails {
 
     private String matricula;
 
+    @Email(message = "Por favor, informe um e-mail válido")
+    @NotEmpty(message = "Please provide an e-mail")
+    private String email;
+
     private String cpf;
 
     private String senha;
 
     private String roles = "";
+
+    @Column(name = "reset_token")
+    private String resetToken;
 
     @ManyToMany
     @JoinTable(name = "ArquivoPessoa",
@@ -82,6 +91,22 @@ public class Pessoa extends AuditoriaModel implements UserDetails {
 
     public void setRoles(String roles) {
         this.roles = roles;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getResetToken() {
+        return resetToken;
+    }
+
+    public void setResetToken(String resetToken) {
+        this.resetToken = resetToken;
     }
 
     public List<Arquivo> getArquivos() {

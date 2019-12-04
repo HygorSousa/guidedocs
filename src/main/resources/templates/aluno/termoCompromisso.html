@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="br">
+<head>
+    <title>Termo de Compromisso de Orientação de Monografia</title>
+    <div th:replace="fragments/header :: header-css"></div>
+    <div th:replace="fragments/header :: header-js"></div>
+</head>
+<body class="hold-transition skin-purple sidebar-mini">
+<div class="wrapper">
+    <div th:replace="fragments/header :: header"></div>
+    <div th:replace="fragments/sidebar :: sidebar"></div>
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>Termo de Compromisso de Orientação de Monografia</h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+                <li class="active">Here</li>
+            </ol>
+        </section>
+
+        <section class="content container-fluid">
+            <div class="container" style="width: 60%">
+                <div style="text-align: center">
+                    <img src="/dist/img/LogoDoc.png" alt="logo" width="60%">
+                </div>
+                <p style="white-space:pre-wrap; word-wrap:break-word;">
+                    Pelo presente termo de compromisso o professor(a) e o/a aluno(a) abaixo identificados comprometem-se a estabelecer uma relação de orientação de Trabalho de Conclusão de Curso – TCC (projeto/monografia), nos seguintes termos:
+
+                    <b>Compete ao professor:</b>
+                    Art. 14, do Regulamento:
+                    I. frequentar as reuniões convocadas pela Coordenação de TCC;
+                    II. realizar quatro reuniões obrigatórias com os alunos orientandos, em datas e horários acordados entre professor e aluno, com a entrega do relatório a Coordenação de TCC;
+                    III. analisar e avaliar os relatórios parciais de atividades que lhe forem entregues pelos orientandos;
+                    IV. avaliar e assinar o relatório final de atividades, no qual deve exercer o juízo de admissibilidade do trabalho monográfico para avaliação em Banca Examinadora;
+                    V. presidir os trabalhos da Banca Examinadora;
+                    VI. assinar, juntamente com os demais membros da banca examinadora, as fichas de avaliação das monografias e as atas finais das sessões de defesa;
+                    VII. comunicar ao Coordenação de TCC, em tempo hábil, quaisquer irregularidades na consecução dos trabalhos sob sua orientação.
+
+                    <b>Compete ao aluno(a):</b>
+                    a) Realizar as atividades determinadas pelo professor orientador;
+                    b) Comparecer aos encontros marcados nos dias e horários combinados;
+                    c) Implementar as recomendações e correções do professor orientador;
+                    d) Efetuar a pesquisa e a redação do Trabalho de Conclusão de Curso com idoneidade, indicando todas as fontes que utilizar; e
+                    e) Procurar o Orientador(a) de Trabalho de Conclusão de Curso em caso de dúvida ou de quaisquer	outros problemas que possam afetar a realização da pesquisa do Trabalho de Conclusão de Curso.
+                    f) Cumprir os deveres específicos do Art. 18, do Regulamento.
+
+                    Dados de identificação:
+
+                    Orientador: <b>Fulano da Silva</b>
+                    Orientando(a): <b>Siclano Santos</b>
+                    Titulo do trabalho: <b>Testando os estilos</b>
+
+                </p>
+                <p class="pull-right">
+                    Palmas, 01 de Dezembro de 2019.
+                </p>
+            </div>
+            <div style="display: flex; justify-content: center;">
+                <div class="col-lg-3 col-xs-6">
+                    <button type="button" class="btn btn-block btn-primary btn-lg">
+                        <i class="fa fa-edit"></i>Assinar</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div th:replace="fragments/footer :: footer"></div>
+</div>
+</body>
+</html>

@@ -13,4 +13,8 @@ public class AlunoController {
         return "/aluno/uploadProjeto";
     }
 
+    @RequestMapping("/termoCompromisso")
+    public String termoCompromisso() {
+        return "/aluno/termoCompromisso";
+    }
 }

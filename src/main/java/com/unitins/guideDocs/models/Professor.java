@@ -33,6 +33,8 @@ public class Professor extends Pessoa {
 		setCpf(cpf);
 		setSenha(senha);
 		setRoles(roles);
+		setEmail("hygor-araujo1@hotmail.com");
+
 	}
 
 	public boolean isProfessorDisciplina() {

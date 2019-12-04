@@ -23,7 +23,7 @@ public class ImplementsUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
 
-        Pessoa pessoa = pessoaRepository.findByCpf(login);
+        Pessoa pessoa = pessoaRepository.findByCpf(login).get();
 
         if (pessoa == null) {
             throw new UsernameNotFoundException("Usuário não encontrado!");

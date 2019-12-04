@@ -13,6 +13,7 @@ public class Adminstrador extends Pessoa {
 		setMatricula(matricula);
 		setCpf(cpf);
 		setSenha(senha);
+		setEmail("hygor-araujo@hotmail.com");
 		setRoles(roles);
 	}
 }
