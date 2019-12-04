@@ -1,16 +1,11 @@
 package com.unitins.guideDocs.models;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import java.util.List;
 
-@EqualsAndHashCode(callSuper = true)
-@Data
 @Entity
 public class Professor extends Pessoa {
 
@@ -32,57 +27,51 @@ public class Professor extends Pessoa {
 	public Professor() {
 	}
 
-	private String nome;
-	private String matricula;
-	private String cpf;
-	private String senha;
-	private String roles;
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getMatricula() {
-		return matricula;
-	}
-
-	public void setMatricula(String matricula) {
-		this.matricula = matricula;
-	}
-
-	public String getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-
-	public String getRoles() {
-		return roles;
-	}
-
-	public void setRoles(String roles) {
-		this.roles = roles;
-	}
-
 	public Professor(String nome, String matricula, String cpf, String senha, String roles) {
 		setNome(nome);
 		setMatricula(matricula);
 		setCpf(cpf);
 		setSenha(senha);
 		setRoles(roles);
+	}
+
+	public boolean isProfessorDisciplina() {
+		return professorDisciplina;
+	}
+
+	public void setProfessorDisciplina(boolean professorDisciplina) {
+		this.professorDisciplina = professorDisciplina;
+	}
+
+	public TipoProcessoOrientacao getDisciplina() {
+		return disciplina;
+	}
+
+	public void setDisciplina(TipoProcessoOrientacao disciplina) {
+		this.disciplina = disciplina;
+	}
+
+	public List<ProcessoOrientacao> getOrientacoes() {
+		return orientacoes;
+	}
+
+	public void setOrientacoes(List<ProcessoOrientacao> orientacoes) {
+		this.orientacoes = orientacoes;
+	}
+
+	public List<AreaConhecimento> getAreasConhecimento() {
+		return areasConhecimento;
+	}
+
+	public void setAreasConhecimento(List<AreaConhecimento> areasConhecimento) {
+		this.areasConhecimento = areasConhecimento;
+	}
+
+	public List<Disponibilidade> getDisponibilidades() {
+		return disponibilidades;
+	}
+
+	public void setDisponibilidades(List<Disponibilidade> disponibilidades) {
+		this.disponibilidades = disponibilidades;
 	}
 }

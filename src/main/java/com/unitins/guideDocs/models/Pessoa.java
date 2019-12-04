@@ -1,7 +1,5 @@
 package com.unitins.guideDocs.models;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,9 +10,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
-@EqualsAndHashCode(callSuper = true)
 @Entity
-@Data
 public class Pessoa extends AuditoriaModel implements UserDetails {
 
     @Id
@@ -36,6 +32,65 @@ public class Pessoa extends AuditoriaModel implements UserDetails {
             joinColumns = @JoinColumn(name = "idPessoa"),
             inverseJoinColumns = @JoinColumn(name = "idArquivo"))
     private List<Arquivo> arquivos;
+
+    public Pessoa() {
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public String getRoles() {
+        return roles;
+    }
+
+    public void setRoles(String roles) {
+        this.roles = roles;
+    }
+
+    public List<Arquivo> getArquivos() {
+        return arquivos;
+    }
+
+    public void setArquivos(List<Arquivo> arquivos) {
+        this.arquivos = arquivos;
+    }
 
     private List<String> getRoleList() {
         if (this.roles.length() > 0) {
@@ -65,30 +120,6 @@ public class Pessoa extends AuditoriaModel implements UserDetails {
     public String getUsername() {
         return this.cpf;
     }
-
-    public String getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-	
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
 
 	@Override
     public boolean isAccountNonExpired() {
