@@ -34,18 +34,19 @@ public class TermoCompromissoController {
     @RequestMapping(value = "/termoCompromisso", method = RequestMethod.GET)
     public String termoCompromisso(Model model) {
         Optional<ProcessoOrientacao> processoOrientacao = getProcessoOrientacao();
+        if (processoOrientacao.isPresent()) {
+            model.addAttribute("orientador", processoOrientacao.get().getProfessorOrientador().getNome());
+            model.addAttribute("orientando", processoOrientacao.get().getAluno().getNome());
+            model.addAttribute("titulo", processoOrientacao.get().getTitulo());
+            model.addAttribute("data", Util.getDateExtension(new Date()));
 
-        model.addAttribute("orientador", processoOrientacao.get().getProfessorOrientador().getNome());
-        model.addAttribute("orientando", processoOrientacao.get().getAluno().getNome());
-        model.addAttribute("titulo", processoOrientacao.get().getTitulo());
-        model.addAttribute("data", Util.getDateExtension(new Date()));
-
-        Optional<Documento> doc = processoOrientacao.get().getDocumentos().stream().filter(documento -> documento.getTipoDocumento().equals(TipoDocumento.COMPROMISSOORIENTACAO)).findFirst();
-        if (doc.isPresent()) {
-            if (doc.get().isAssinadoAluno())
-                model.addAttribute("dataAluno", Util.getDateExtension(doc.get().getDataAssinaturaAluno()));
-            if (doc.get().isAssinadoProfessor())
-                model.addAttribute("dataProfessor", Util.getDateExtension(doc.get().getDataAssinaturaProfessor()));
+            Optional<Documento> doc = processoOrientacao.get().getDocumentos().stream().filter(documento -> documento.getTipoDocumento().equals(TipoDocumento.COMPROMISSOORIENTACAO)).findFirst();
+            if (doc.isPresent()) {
+                if (doc.get().isAssinadoAluno())
+                    model.addAttribute("dataAluno", Util.getDateExtension(doc.get().getDataAssinaturaAluno()));
+                if (doc.get().isAssinadoProfessor())
+                    model.addAttribute("dataProfessor", Util.getDateExtension(doc.get().getDataAssinaturaProfessor()));
+            }
         }
         return "/aluno/termoCompromisso";
     }
@@ -65,6 +66,7 @@ public class TermoCompromissoController {
 
             orientacao.getDocumentos().add(documento);
 
+            orientacao.getAluno().setPermissions(orientacao.getAluno().getPermissions().concat(orientacao.getAluno().getPermissions().length() > 0 ? ",ASSINADO_ALUNO" : "ASSINADO_ALUNO"));
             orientacao.getAluno().setPermissions(orientacao.getAluno().getPermissions().concat(orientacao.getAluno().getPermissions().length() > 0 ? ",ASSINADO_ALUNO" : "ASSINADO_ALUNO"));
 
             pessoaRepository.save(orientacao.getAluno());
