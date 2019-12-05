@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org" lang="br">
+<html xmlns:th="http://www.thymeleaf.org" lang="br"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <title>Termo de Compromisso de Orientação de Monografia</title>
     <div th:replace="fragments/header :: header-css"></div>
@@ -11,21 +12,23 @@
     <div th:replace="fragments/sidebar :: sidebar"></div>
 
     <div class="content-wrapper">
-        <section class="content-header">
-            <h1>Termo de Compromisso de Orientação de Monografia</h1>
-            <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-                <li class="active">Here</li>
-            </ol>
-        </section>
+        <form method="post" th:action="@{/termoCompromisso}">
 
-        <section class="content container-fluid">
-            <div class="container" style="width: 60%">
-                <div style="text-align: center">
-                    <img src="/dist/img/LogoDoc.png" alt="logo" width="60%">
-                </div>
-                <p style="white-space:pre-wrap; word-wrap:break-word;">
-                    Pelo presente termo de compromisso o professor(a) e o/a aluno(a) abaixo identificados comprometem-se a estabelecer uma relação de orientação de Trabalho de Conclusão de Curso – TCC (projeto/monografia), nos seguintes termos:
+            <section class="content-header">
+                <h1>Termo de Compromisso de Orientação de Monografia</h1>
+                <ol class="breadcrumb">
+                    <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+                    <li class="active">Here</li>
+                </ol>
+            </section>
+
+            <section class="content container-fluid">
+                <div class="container" style="width: 80%">
+                    <div style="text-align: center">
+                        <img src="/dist/img/LogoDoc.png" alt="logo" width="60%">
+                    </div>
+                    <p style="white-space:pre-wrap; word-wrap:break-word;">
+                        Pelo presente termo de compromisso o professor(a) e o/a aluno(a) abaixo identificados comprometem-se a estabelecer uma relação de orientação de Trabalho de Conclusão de Curso – TCC (projeto/monografia), nos seguintes termos:
 
                     <b>Compete ao professor:</b>
                     Art. 14, do Regulamento:
@@ -42,27 +45,44 @@
                     b) Comparecer aos encontros marcados nos dias e horários combinados;
                     c) Implementar as recomendações e correções do professor orientador;
                     d) Efetuar a pesquisa e a redação do Trabalho de Conclusão de Curso com idoneidade, indicando todas as fontes que utilizar; e
-                    e) Procurar o Orientador(a) de Trabalho de Conclusão de Curso em caso de dúvida ou de quaisquer	outros problemas que possam afetar a realização da pesquisa do Trabalho de Conclusão de Curso.
+                    e) Procurar o Orientador(a) de Trabalho de Conclusão de Curso em caso de dúvida ou de quaisquer outros problemas que possam afetar a realização da pesquisa do Trabalho de Conclusão de Curso.
                     f) Cumprir os deveres específicos do Art. 18, do Regulamento.
 
                     Dados de identificação:
 
-                    Orientador: <b>Fulano da Silva</b>
-                    Orientando(a): <b>Siclano Santos</b>
-                    Titulo do trabalho: <b>Testando os estilos</b>
+                    Orientador: <b><span th:text="${orientador}"></span></b>
+                    Orientando(a): <b><span th:text="${orientando}"></span></b>
+                    Titulo do trabalho: <b><span th:text="${titulo}"></span></b>
 
-                </p>
-                <p class="pull-right">
-                    Palmas, 01 de Dezembro de 2019.
-                </p>
-            </div>
-            <div style="display: flex; justify-content: center;">
-                <div class="col-lg-3 col-xs-6">
-                    <button type="button" class="btn btn-block btn-primary btn-lg">
-                        <i class="fa fa-edit"></i>Assinar</button>
+                    </p>
+                    <p class="pull-right">
+                        Palmas, <span th:text="${data}"></span>.
+                    </p>
+                    <br/>
+                    <table style="width: 100%">
+                        <tr>
+                            <td class="text-center" style="width: 50%" sec:authorize="hasAuthority('ASSINADO_ALUNO')">
+                                <span th:text="${orientando}"></span><br/>
+                                <span th:text="${dataAluno}"></span>
+                            </td>
+
+                            <td class="text-center" style="width: 50%" sec:authorize="hasAuthority('ASSINADO_PROFESSOR')">
+                                <span th:text="${orientador}"></span><br/>
+                                <span th:text="${dataProfessor}"></span>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
-            </div>
-        </section>
+                <br/>
+                <div style="display: flex; justify-content: center;" sec:authorize="!(hasAuthority('ASSINADO_ALUNO'))">
+                    <div class="col-lg-3 col-xs-6">
+                        <button type="submit" class="btn btn-block btn-primary btn-lg">
+                            <i class="fa fa-edit"></i>Assinar
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </form>
     </div>
 
     <div th:replace="fragments/footer :: footer"></div>

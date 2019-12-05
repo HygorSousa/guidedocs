@@ -33,6 +33,8 @@ public class Pessoa extends AuditoriaModel implements UserDetails {
 
     private String roles = "";
 
+    private String permissions = "";
+
     @Column(name = "reset_token")
     private String resetToken;
 
@@ -93,6 +95,14 @@ public class Pessoa extends AuditoriaModel implements UserDetails {
         this.roles = roles;
     }
 
+    public String getPermissions() {
+        return permissions;
+    }
+
+    public void setPermissions(String permissions) {
+        this.permissions = permissions;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -124,12 +134,24 @@ public class Pessoa extends AuditoriaModel implements UserDetails {
         return new ArrayList<>();
     }
 
+    private List<String> getPermissionList() {
+        if (this.permissions.length() > 0) {
+            return Arrays.asList(this.permissions.split(","));
+        }
+        return new ArrayList<>();
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> authorities = new ArrayList<>();
 
         this.getRoleList().forEach(r -> {
             GrantedAuthority authority = new SimpleGrantedAuthority("ROLE_" + r);
+            authorities.add(authority);
+        });
+
+        this.getPermissionList().forEach(r -> {
+            GrantedAuthority authority = new SimpleGrantedAuthority( r);
             authorities.add(authority);
         });
 
