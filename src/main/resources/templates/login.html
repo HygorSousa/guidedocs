@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html lang="br" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Login</title>
+  <div th:replace="fragments/header :: header-css"></div>
+  <div th:replace="fragments/header :: header-js"></div>
+</head>
+<body class="hold-transition login-page">
+<div class="login-box">
+  <div class="login-logo">
+    <a href="index.html"><b>Guide</b>Docs</a>
+  </div>
+  <!-- /.login-logo -->
+  <div class="login-box-body">
+    <p class="login-box-msg">Realize o login para continuar</p>
+
+    <form action="index.html" method="post" th:action="@{/login}">
+
+      <div class="form-group has-feedback">
+        <label for="username"></label>
+        <input class="form-control" id="username" name="username" placeholder="Login" type="text"/>
+      </div>
+
+      <div class="form-group has-feedback">
+        <label for="password"></label>
+        <input class="form-control" id="password" name="password" placeholder="Senha" type="password">
+      </div>
+
+      <div class="row">
+        <div class="col-xs-8">
+          <div>
+            <input type="checkbox" id="remember-me" name="remember-me">
+            <label for="remember-me">Lembrar-me</label>
+          </div>
+        </div>
+        <!-- /.col -->
+        <div class="col-xs-4">
+          <button class="btn btn-primary btn-block btn-flat" type="submit">Entrar</button>
+        </div>
+        <!-- /.col -->
+      </div>
+    </form>
+
+    <a href="#">Esqueci minha senha</a><br>
+
+  </div>
+  <!-- /.login-box-body -->
+</div>
+<!-- /.login-box -->
+
+<!-- jQuery 3 -->
+<script src="/bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- iCheck -->
+<script src="plugins/iCheck/icheck.min.js"></script>
+</body>
+</html>

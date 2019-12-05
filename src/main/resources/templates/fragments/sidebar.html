@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="sidebar">
+    <aside class="main-sidebar">
+        <section class="sidebar">
+            <ul class="sidebar-menu" data-widget="tree">
+                <li class="header">MENU</li>
+                <li class="active"><a href="#"><i class="fa fa-home"></i> <span>Home</span></a></li>
+                <li class="treeview" sec:authorize="hasRole('ROLE_ADMIN')">
+                    <a href="#"><i class="fa fa-user"></i> <span>Adminstrador</span>
+                        <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="#">Aluno</a></li>
+                        <li><a href="#">Professor</a></li>
+                        <li><a href="#">Curso</a></li>
+                        <li><a href="#">Turma</a></li>
+                    </ul>
+                </li>
+                <li class="treeview" sec:authorize="hasRole('ROLE_ALUNO')">
+                    <a href="#"><i class="fa fa-user"></i> <span>Aluno</span>
+                        <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="#">Cadrastrar Orientação</a></li>
+                        <li><a href="#">Termo de Compromisso</a></li>
+                        <li><a href="#">Submeter Proposta</a></li>
+                    </ul>
+                </li>
+                <li class="treeview" sec:authorize="hasRole('ROLE_PROFESSOR')">
+                    <a href="#"><i class="fa fa-user"></i> <span>Professor</span>
+                        <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="#">Aceitar Orientação</a></li>
+                        <li><a href="#">Avaliar Projeto</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+    </aside>
+</div>
+</body>
+</html>

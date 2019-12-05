@@ -1,0 +1,166 @@
+<!DOCTYPE HTML>
+<html lang="br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Excluir Aluno</title>
+    <div th:replace="fragments/header :: header-css"></div>
+    <div th:replace="fragments/header :: header-js"></div>
+</head>
+<body class="hold-transition skin-purple sidebar-mini">
+<div class="wrapper">
+    <div th:replace="fragments/header :: header"></div>
+    <div th:replace="fragments/sidebar :: sidebar"></div>
+
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>Excluir Aluno</h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+                <li class="active">Here</li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content container-fluid">
+
+            <div class="box-body">
+                <div class="dataTables_wrapper form-inline dt-bootstrap"
+                     id="example1_wrapper">
+                    <div class="input-group">
+                        <select>
+                            <option value="1">Selecione um Professor</option>
+                            <option selected value="2">Professor 1</option>
+                            <option value="3">Professor 2</option>
+                            <option value="4">Professor 3</option>
+                        </select>
+                        <div>
+                            <button type="button">Ir</button>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table aria-describedby="example1_info"
+                                   class="table table-bordered table-striped dataTable"
+                                   id="example1" role="grid">
+                                <thead>
+                                <tr role="row">
+                                    <th aria-controls="example1"
+                                        aria-label="Rendering engine: activate to sort column descending"
+                                        aria-sort="ascending"
+                                        class="sorting_asc" colspan="1" rowspan="1"
+                                        style="width: 182px;"
+                                        tabindex="0">Aluno(a)
+                                    </th>
+                                    <th aria-controls="example1" aria-label="Browser: activate to sort column ascending"
+                                        class="sorting"
+                                        colspan="1" rowspan="1"
+                                        style="width: 225px;"
+                                        tabindex="0">Detalhes
+                                    </th>
+                                    <th aria-controls="example1"
+                                        aria-label="Platform(s): activate to sort column ascending" class="sorting"
+                                        colspan="1" rowspan="1"
+                                        style="width: 199px;"
+                                        tabindex="0">Materias
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr class="odd" role="row">
+                                    <td>Aluno 1</td>
+                                    <td><a href="">Detalhes</a></td>
+                                    <td><a href="">Nome da(s) Materia(s)</a></td>
+                                </tr>
+                                <tr class="odd" role="row">
+                                    <td>Aluno 2</td>
+                                    <td><a href="">Detalhes</a></td>
+                                    <td><a href="">Nome da(s) Materia(s)</a></td>
+                                </tr>
+                                <tr class="odd" role="row">
+                                    <td>Aluno 2</td>
+                                    <td><a href="">Detalhes</a></td>
+                                    <td><a href="">Nome da(s) Materia(s)</a></td>
+                                </tr>
+                                </tbody>
+                                <br>
+                                <thead>
+                                <tr role="row">
+                                    <th aria-controls="example1"
+                                        aria-label="Rendering engine: activate to sort column descending"
+                                        aria-sort="ascending"
+                                        class="sorting_asc" colspan="1" rowspan="1"
+                                        style="width: 182px;"
+                                        tabindex="0">Aluno(a)
+                                    </th>
+                                    <th aria-controls="example1" aria-label="Browser: activate to sort column ascending"
+                                        class="sorting"
+                                        colspan="1" rowspan="1"
+                                        style="width: 225px;"
+                                        tabindex="0">Detalhes
+                                    </th>
+                                    <th aria-controls="example1"
+                                        aria-label="Platform(s): activate to sort column ascending" class="sorting"
+                                        colspan="1" rowspan="1"
+                                        style="width: 199px;"
+                                        tabindex="0">Materias
+                                    </th>
+                                    <th aria-controls="example1"
+                                        aria-label="Engine version: activate to sort column ascending" class="sorting"
+                                        colspan="1" rowspan="1"
+                                        style="width: 156px;"
+                                        tabindex="0">Deletar
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr class="odd" role="row">
+                                    <td>Aluno 1</td>
+                                    <td><a href="">Detalhes</a></td>
+                                    <td><a href="">Nome da(s) Materia(s)</a></td>
+                                    <td><a href="">Deletar</a></td>
+                                </tr>
+                                <tr class="odd" role="row">
+                                    <td>Aluno 2</td>
+                                    <td><a href="">Detalhes</a></td>
+                                    <td><a href="">Nome da(s) Materia(s)</a></td>
+                                    <td><a href="">Deletar</a></td>
+                                </tr>
+                                <tr class="odd" role="row">
+                                    <td>Aluno 2</td>
+                                    <td><a href="">Detalhes</a></td>
+                                    <td><a href="">Nome da(s) Materia(s)</a></td>
+                                    <td><a href="">Deletar</a></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div>
+                                <ul class="pagination">
+                                    <li><a href="#">Previous</a></li>
+                                    <li class="paginate_button active"><a href="#">1</a></li>
+                                    <li class="paginate_button "><a href="#">2</a></li>
+                                    <li class="paginate_button "><a href="#">3</a></li>
+                                    <li class="paginate_button "><a href="#">4</a></li>
+                                    <li class="paginate_button "><a href="#">5</a></li>
+                                    <li class="paginate_button "><a href="#">6</a></li>
+                                    <li class="paginate_button next" id="example1_next"><a>Next</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <!-- /.content -->
+    </div>
+
+    <div th:replace="fragments/footer :: footer"></div>
+
+</div>
+</body>
+</html> 
