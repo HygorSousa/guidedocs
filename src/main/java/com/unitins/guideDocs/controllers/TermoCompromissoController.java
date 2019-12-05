@@ -77,7 +77,7 @@ public class TermoCompromissoController {
 
         Util.updateAuthorities(Collections.singletonList("ASSINADO_ALUNO"));
 
-        return "redirect:/home";
+        return "redirect:/termoCompromisso";
     }
 
     private Optional<ProcessoOrientacao> getProcessoOrientacao() {
