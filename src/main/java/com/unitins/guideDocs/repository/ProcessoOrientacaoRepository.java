@@ -10,4 +10,6 @@ import java.util.Optional;
 public interface ProcessoOrientacaoRepository extends JpaRepository<ProcessoOrientacao, String> {
 
     Optional<ProcessoOrientacao> findByAlunoCpf(String cpf);
+
+    Optional<ProcessoOrientacao> findById(Integer idprocesso);
 }

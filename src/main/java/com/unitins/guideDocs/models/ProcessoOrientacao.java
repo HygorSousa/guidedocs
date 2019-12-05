@@ -32,7 +32,7 @@ public class ProcessoOrientacao {
     @JoinColumn(name = "idintencaoorientador")
     private Professor intencaoOrientador;
 
-    @OneToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @OneToMany(cascade = {CascadeType.ALL}, orphanRemoval = true)
     @JoinTable(name = "DocumentosProcessoOrientacao",
             joinColumns = @JoinColumn(name = "idProcessoOrientacao"),
             inverseJoinColumns = @JoinColumn(name = "idDocumento"))

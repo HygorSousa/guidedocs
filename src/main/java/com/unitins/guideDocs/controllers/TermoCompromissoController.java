@@ -12,12 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.Collections;
 import java.util.Date;
-import java.util.Map;
 import java.util.Optional;
 
 @Controller
@@ -52,30 +49,35 @@ public class TermoCompromissoController {
     }
 
     @RequestMapping(value = "/termoCompromisso", method = RequestMethod.POST)
-    public ModelAndView assinarDocumento(ModelAndView modelAndView, @RequestParam Map<String, String> requestParams, RedirectAttributes redir) {
+    public String assinarDocumento() {
         Optional<ProcessoOrientacao> processoOrientacao = getProcessoOrientacao();
 
         if (processoOrientacao.isPresent()) {
-            Documento documento = new Documento();
+            Optional<Documento> documento = processoOrientacao.get().getDocumentos().stream().filter(doc -> doc.getTipoDocumento().equals(TipoDocumento.COMPROMISSOORIENTACAO)).findFirst();
+            if (documento.isPresent()) {
+                documento.get().setAssinadoAluno(true);
+                documento.get().setDataAssinaturaAluno(new Date());
+            } else {
+                Documento documento1 = new Documento();
 
-            documento.setTipoDocumento(TipoDocumento.COMPROMISSOORIENTACAO);
-            documento.setAssinadoAluno(true);
-            documento.setDataAssinaturaAluno(new Date());
+                documento1.setTipoDocumento(TipoDocumento.COMPROMISSOORIENTACAO);
+                documento1.setAssinadoAluno(true);
+                documento1.setDataAssinaturaAluno(new Date());
+
+                processoOrientacao.get().getDocumentos().add(documento1);
+            }
 
             ProcessoOrientacao orientacao = processoOrientacao.get();
 
-            orientacao.getDocumentos().add(documento);
-
-            orientacao.getAluno().setPermissions(orientacao.getAluno().getPermissions().concat(orientacao.getAluno().getPermissions().length() > 0 ? ",ASSINADO_ALUNO" : "ASSINADO_ALUNO"));
             orientacao.getAluno().setPermissions(orientacao.getAluno().getPermissions().concat(orientacao.getAluno().getPermissions().length() > 0 ? ",ASSINADO_ALUNO" : "ASSINADO_ALUNO"));
 
             pessoaRepository.save(orientacao.getAluno());
             repository.save(orientacao);
         }
 
-        modelAndView.setViewName("termoCompromisso");
+        Util.updateAuthorities(Collections.singletonList("ASSINADO_ALUNO"));
 
-        return modelAndView;
+        return "redirect:/home";
     }
 
     private Optional<ProcessoOrientacao> getProcessoOrientacao() {

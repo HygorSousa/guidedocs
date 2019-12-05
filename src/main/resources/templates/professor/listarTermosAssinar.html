@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html lang="br" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Assinar Documentos</title>
+<div th:replace="fragments/header :: header-css"></div>
+<div th:replace="fragments/header :: header-js"></div>
+</head>
+<body class="hold-transition skin-purple sidebar-mini">
+	<div class="wrapper">
+		<div th:replace="fragments/header :: header"></div>
+		<div th:replace="fragments/sidebar :: sidebar"></div>
+
+		<div class="content-wrapper">
+			<section class="content-header">
+				<h1>Termos de Compromisso de Monografia</h1>
+				<ol class="breadcrumb">
+					<li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+					<li class="active">Here</li>
+				</ol>
+			</section>
+
+			<section class="content container-fluid">
+				<div class="box-body">
+					<div class="dataTables_wrapper form-inline dt-bootstrap"
+						id="example1_wrapper">
+						<div class="row">
+							<div class="col-sm-12">
+								<table
+										class="table table-bordered table-striped dataTable"
+										role="grid">
+									<thead>
+									<tr role="row">
+										<th>Aluno</th>
+										<th>Titulo</th>
+										<th>Descrição</th>
+										<th>Assinar</th>
+									</thead>
+									<tbody>
+									<tr th:each="processo : ${processos}">
+										<td th:text="${processo.aluno.nome}"></td>
+										<td><a href="#" th:text="${processo.titulo}"></a></td>
+										<td th:text="${processo.descricao}"></td>
+										<td>
+											<a th:href="@{/assinar_termo(idprocesso=${processo.id})}"
+											   class="btn btn-primary">Assinar</a>
+										</td>
+									</tr>
+									</tbody>
+									<tfoot>
+
+									</tfoot>
+
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+
+	<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>
