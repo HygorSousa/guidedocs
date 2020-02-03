@@ -66,23 +66,12 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr class="odd" role="row">
-                                    <td>Aluno 1</td>
-                                    <td>000.000.000-01</td>
-                                    <td><a href="">Editar</a></td>
-                                    <td><a href="">Deletar</a></td>
-                                </tr>
-                                <tr class="odd" role="row">
-                                    <td>Aluno 2</td>
-                                    <td>000.000.000-02</td>
-                                    <td><a href="">Editar</a></td>
-                                    <td><a href="">Deletar</a></td>
-                                </tr>
-                                <tr class="odd" role="row">
-                                    <td>Aluno 2</td>
-                                    <td>000.000.000-03</td>
-                                    <td><a href="">Editar</a></td>
-                                    <td><a href="">Deletar</a></td>
+                                <!--/*@thymesVar id="alunos" type="com.unitins.guideDocs.models.Aluno"*/-->
+                                <tr class="odd" role="row" th:each="aluno: ${alunos}">
+                                    <td><span th:text="${aluno.nome}"></td>
+                                    <td><span th:text="${aluno.matricula}"></td>
+                                    <td><a th:href="@{/editarAluno/{id}(id=${aluno.id})}">Editar</a></td>
+                                    <td> <a th:href="@{/excluirAluno/{id}(id=${aluno.id})}">Excluir</a></td>
                                 </tr>
                                 </tbody>
                                 <tfoot>
@@ -95,8 +84,7 @@
                                 </tfoot>
                             </table>
                         </div>
-                    </div>
-                    <div class="row">
+
                         <div class="col-sm-8">
                             <div aria-live="polite" class="dataTables_info" id="example1_info"
                                  role="status">Exibindo 1 a 10 de 25 Alunos

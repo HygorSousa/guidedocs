@@ -29,7 +29,7 @@
             <!-- CORPO FORMULARIO -->
             <div class="container" style="width: 80%;">
 
-                <form>
+                <form action="#" class="form-horizontal" th:action="@{/addProfessor}" th:object="${professor}" method="post">
                     <div>
                         <output>Nome Completo do Professor</output>
                         <input class="form-control" placeholder="Nome do Professor">

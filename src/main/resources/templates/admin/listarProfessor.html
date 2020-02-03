@@ -66,23 +66,11 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr class="odd" role="row">
-                                    <td>DARLENE TEIXEIRA CASTRO</td>
-                                    <td>000.000.000-02</td>
-                                    <td><a href="">Editar</a></td>
-                                    <td><a href="">Deletar</a></td>
-                                </tr>
-                                <tr class="odd" role="row">
-                                    <td>JÂNIO ELIAS TEIXEIRA JÚNIOR</td>
-                                    <td>000.000.000-03</td>
-                                    <td><a href="">Editar</a></td>
-                                    <td><a href="">Deletar</a></td>
-                                </tr>
-                                <tr class="odd" role="row">
-                                    <td>ALEX COELHO</td>
-                                    <td>000.000.000-01</td>
-                                    <td><a href="">Editar</a></td>
-                                    <td><a href="">Deletar</a></td>
+                                <tr class="odd" role="row" th:each="professor: ${professores}">
+                                    <td><span th:text="${professor.nome}"></td>
+                                    <td><span th:text="${professor.cpf}"></td>
+                                    <td><a th:href="@{/editarProfessor/{id}(id=${professor.id})}">Editar</a></td>
+                                    <td> <a th:href="@{/excluirProfessor/{id}(id=${professor.id})}">Excluir</a></td>
                                 </tr>
                                 </tbody>
                                 <tfoot>
